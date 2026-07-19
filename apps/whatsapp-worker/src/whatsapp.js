@@ -7,8 +7,12 @@ let latestQr = null;
 let status = 'starting';
 
 const client = new Client({
-  authStrategy: new LocalAuth({ dataPath: config.authPath }),
-  puppeteer: { headless: true, args: config.puppeteerArgs }
+  authStrategy: new LocalAuth(),
+  puppeteer: {
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    // O Docker vai avisar onde o Chrome está instalado
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+  }
 });
 
 client.on('qr', (qr) => {
