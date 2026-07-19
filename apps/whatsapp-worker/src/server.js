@@ -38,7 +38,7 @@ app.put('/api/settings', requireAdmin, async (req, res, next) => {
 });
 
 //app.get('/api/whatsapp/qr', requireAdmin, async (_, res, next) => {
-app.get('/api/whatsapp/qr', requireAdmin, async (_, res, next) => {
+app.get('/api/whatsapp/qr', async (_, res, next) => {
 
   try {
     const state = whatsappState();
