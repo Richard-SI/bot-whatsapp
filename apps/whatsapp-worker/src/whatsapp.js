@@ -1,6 +1,6 @@
 import qrcode from 'qrcode-terminal';
-import { Client, LocalAuth } from 'whatsapp-web.js';
-import { config } from './config.js';
+import whatsapp from 'whatsapp-web.js';
+const { Client, LocalAuth } = whatsapp;import { config } from './config.js';
 import { addInteraction, getWelcomeMessage, markWelcomed, upsertIncomingContact } from './supabase.js';
 
 let latestQr = null;
