@@ -30,16 +30,42 @@ client.on('disconnected', (reason) => { status = 'disconnected'; console.warn('W
 
 client.on('message', async (message) => {
   try {
-    if (message.fromMe || message.from.endsWith('@g.us') || message.type !== 'chat') return;
-    const chat = await message.getChat();
-    const contact = await message.getContact();
-    const phone = message.from.replace(/@c\.us$/, '');
+    // Configura a data de hoje no fuso horário de Brasília (formato DD/MM/YYYY)
+    const todayDate = new Date().toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+    
+    let lastWelcomedDate = null;
+    if (record.welcomed_at) {
+      // Converte a data salva no banco para o mesmo formato
+      lastWelcomedDate = new Date(record.welcomed_at).toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+    }
+
+    // Dispara a saudação se for o primeiro contato da vida OU o primeiro contato do dia
+    if (lastWelcomedDate !== todayDate) {
+      const welcome = await getWelcomeMessage();
+      await client.sendMessage(message.from, welcome);
+      
+      await addInteraction({ 
+        contactId: record.id, 
+        direction: 'outbound', 
+        body: welcome, 
+        occurredAt: new Date().toISOString() 
+      });
+      
+      await markWelcomed(record.id);
+    }
+    
+    const phone = message.from.split('@')[0];
     const occurredAt = new Date(message.timestamp * 1000).toISOString();
+    
+    // Pega o nome do perfil do WhatsApp sem usar getChat() ou getContact()
+    const displayName = message._data?.notifyName || phone;
+
     const record = await upsertIncomingContact({
       phone,
-      displayName: contact.pushname || contact.name || chat.name,
+      displayName: displayName,
       messageAt: occurredAt
     });
+    
     await addInteraction({ contactId: record.id, direction: 'inbound', body: message.body, occurredAt });
 
     // Uma única boas-vindas por contato; evita spam a cada nova mensagem.
