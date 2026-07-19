@@ -9,8 +9,11 @@ let status = 'starting';
 const client = new Client({
   authStrategy: new LocalAuth(),
   puppeteer: {
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    // O Docker vai avisar onde o Chrome está instalado
+    args: [
+      '--no-sandbox', 
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage' // Adicione esta linha vital
+    ],
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
   }
 });
