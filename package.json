@@ -1,0 +1,11 @@
+{
+  "name": "whatsapp-atendimento",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev:dashboard": "npm --workspace @atendimento/dashboard run dev",
+    "dev:worker": "npm --workspace @atendimento/whatsapp-worker run dev",
+    "build": "npm --workspace @atendimento/dashboard run build"
+  }
+}
