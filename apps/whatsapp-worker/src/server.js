@@ -37,7 +37,9 @@ app.put('/api/settings', requireAdmin, async (req, res, next) => {
   } catch (error) { next(error); }
 });
 
+//app.get('/api/whatsapp/qr', requireAdmin, async (_, res, next) => {
 app.get('/api/whatsapp/qr', requireAdmin, async (_, res, next) => {
+
   try {
     const state = whatsappState();
     res.json({ status: state.status, qrDataUrl: state.qr ? await QRCode.toDataURL(state.qr) : null });
