@@ -10,9 +10,13 @@ const client = new Client({
   authStrategy: new LocalAuth(),
   puppeteer: {
     args: [
-      '--no-sandbox', 
+     '--no-sandbox',
       '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage' // Adicione esta linha vital
+      '--disable-dev-shm-usage', // O PULO DO GATO: Evita o estouro de memória no Docker
+      '--disable-accelerated-2d-canvas', // Desliga aceleração gráfica desnecessária
+      '--no-first-run',
+      '--no-zygote',
+      '--disable-gpu' // Desliga a GPU
     ],
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
   }
