@@ -8,9 +8,10 @@ import { startWhatsApp, whatsappState } from './whatsapp.js';
 
 const app = express();
 app.use(cors({
-  origin: function (origin, callback) {
-    callback(null, true);
-  },
+  origin: [
+    'https://bot-whatsapp-dashboard.vercel.app', // Libera o seu painel em produção
+    'http://localhost:5173'                      // Mantém liberado para os seus testes locais
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
