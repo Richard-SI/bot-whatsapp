@@ -3,11 +3,13 @@ import { supabase } from './lib/supabase';
 import LoginView from './views/LoginView.vue';
 import DashboardView from './views/DashboardView.vue';
 import SettingsView from './views/SettingsView.vue';
+import DeviceView from './views/DeviceView.vue';
 
 const router = createRouter({ history: createWebHistory(), routes: [
   { path: '/login', component: LoginView },
   { path: '/', component: DashboardView, meta: { auth: true } },
-  { path: '/configuracoes', component: SettingsView, meta: { auth: true } }
+  { path: '/configuracoes', component: SettingsView, meta: { auth: true } },
+  { path: '/dispositivo', component: DeviceView, meta: { requiresAuth: true } },
 ]});
 router.beforeEach(async (to) => {
   const { data: { session } } = await supabase.auth.getSession();

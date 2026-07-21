@@ -16,5 +16,7 @@ export const api = {
   contacts: () => request('/api/contacts'),
   settings: () => request('/api/settings'),
   saveSettings: (welcome_message) => request('/api/settings', { method: 'PUT', body: JSON.stringify({ welcome_message }) }),
-  whatsappQr: () => request('/api/whatsapp/qr')
+  whatsappQr: () => request('/api/whatsapp/qr'),
+  // NOVA LINHA:
+  whatsappDisconnect: () => request('/api/whatsapp/disconnect', { method: 'POST' })
 };

@@ -42,8 +42,24 @@ app.get('/api/whatsapp/qr', requireAdmin, async (_, res, next) => {
 
   try {
     const state = whatsappState();
-    res.json({ status: state.status, qrDataUrl: state.qr ? await QRCode.toDataURL(state.qr) : null });
-  } catch (error) { next(error); }
+    res.json({ 
+      status: state.status, 
+      qrDataUrl: state.qr ? await QRCode.toDataURL(state.qr) : null,
+      phone: state.phone // <-- Esta é a linha mágica que faltava!
+    });
+  } catch (error) { 
+    next(error); 
+  }
+});
+
+app.post('/api/whatsapp/disconnect', requireAdmin, async (_, res, next) => {
+  try {
+    const { disconnectDevice } = await import('./whatsapp.js');
+    await disconnectDevice();
+    res.json({ message: 'Aparelho desconectado com sucesso.' });
+  } catch (error) {
+    next(error);
+  }
 });
 
 app.use((error, _, res, __) => { console.error(error); res.status(500).json({ error: 'Erro interno.' }); });
