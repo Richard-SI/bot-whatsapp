@@ -1,2 +1,3 @@
-2026/07/20-21:32:04.253 579552 Creating DB /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/GCM Store since it was missing.
-2026/07/20-21:32:04.264 579552 Reusing MANIFEST /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/GCM Store/MANIFEST-000001
+2026/07/20-22:10:06.917 586a3f Reusing MANIFEST /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/GCM Store/MANIFEST-000001
+2026/07/20-22:10:06.917 586a3f Recovering log #3
+2026/07/20-22:10:06.919 586a3f Reusing old log /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/GCM Store/000003.log 

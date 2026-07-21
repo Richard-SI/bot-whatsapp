@@ -1,2 +1,3 @@
-2026/07/20-21:32:00.167 579568 Creating DB /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/shared_proto_db/metadata since it was missing.
-2026/07/20-21:32:00.170 579568 Reusing MANIFEST /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/shared_proto_db/metadata/MANIFEST-000001
+2026/07/20-22:10:04.822 586a4d Reusing MANIFEST /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/shared_proto_db/metadata/MANIFEST-000001
+2026/07/20-22:10:04.822 586a4d Recovering log #3
+2026/07/20-22:10:04.822 586a4d Reusing old log /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/shared_proto_db/metadata/000003.log 

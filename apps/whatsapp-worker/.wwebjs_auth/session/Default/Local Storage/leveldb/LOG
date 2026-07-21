@@ -1,2 +1,3 @@
-2026/07/20-21:32:00.046 5795a9 Creating DB /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/Local Storage/leveldb since it was missing.
-2026/07/20-21:32:00.051 5795a9 Reusing MANIFEST /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/Local Storage/leveldb/MANIFEST-000001
+2026/07/20-22:10:04.709 586a90 Reusing MANIFEST /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/Local Storage/leveldb/MANIFEST-000001
+2026/07/20-22:10:04.711 586a90 Recovering log #3
+2026/07/20-22:10:04.711 586a90 Reusing old log /Users/richardnunesmachado/Documents/bot-whatsapp/apps/whatsapp-worker/.wwebjs_auth/session/Default/Local Storage/leveldb/000003.log 
