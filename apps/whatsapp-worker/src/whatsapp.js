@@ -10,15 +10,25 @@ const client = new Client({
   authStrategy: new LocalAuth(),
   puppeteer: {
     args: [
-     '--no-sandbox',
+      '--no-sandbox',
       '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage', // O PULO DO GATO: Evita o estouro de memória no Docker
-      '--disable-accelerated-2d-canvas', // Desliga aceleração gráfica desnecessária
+      '--disable-dev-shm-usage', 
+      '--disable-accelerated-2d-canvas', 
       '--no-first-run',
       '--no-zygote',
-      '--disable-gpu' // Desliga a GPU
+      '--disable-gpu',
+      '--single-process', // A MÁGICA AQUI: Força o Chrome a não abrir processos paralelos (Economiza muita RAM)
+      '--js-flags="--max-old-space-size=256"', // Limita o motor de processamento a 256MB
+      '--disable-extensions',
+      '--disable-default-apps',
+      '--disable-background-networking',
+      '--disable-sync'
     ],
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
+  },
+  webVersionCache: {
+    type: 'remote',
+    remotePath: 'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2412.54.html',
   }
 });
 
