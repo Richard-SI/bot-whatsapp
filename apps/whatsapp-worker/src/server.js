@@ -7,7 +7,13 @@ import { getWelcomeMessage, supabaseAdmin } from './supabase.js';
 import { startWhatsApp, whatsappState } from './whatsapp.js';
 
 const app = express();
-app.use(cors({ origin: config.corsOrigin }));
+app.use(cors({
+  origin: '*', // Libera para qualquer domínio (Vercel ou seu localhost)
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'] // Avisa que aceitamos o token do Supabase
+}));
+
+app.use(express.json());
 app.use(express.json());
 app.get('/health', (_, res) => res.json({ ok: true, ...whatsappState() }));
 
