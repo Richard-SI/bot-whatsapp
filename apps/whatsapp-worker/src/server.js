@@ -8,9 +8,12 @@ import { startWhatsApp, whatsappState } from './whatsapp.js';
 
 const app = express();
 app.use(cors({
-  origin: '*', // Libera para qualquer domínio (Vercel ou seu localhost)
+  origin: [
+    'https://bot-whatsapp-dashboard.vercel.app', // Libera o seu painel em produção
+    'http://localhost:5173'                      // Mantém liberado para os seus testes locais
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'] // Avisa que aceitamos o token do Supabase
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
