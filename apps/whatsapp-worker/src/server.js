@@ -9,7 +9,6 @@ import { startWhatsApp, whatsappState } from './whatsapp.js';
 const app = express();
 app.use(cors({
   origin: function (origin, callback) {
-    // Retorna 'true' para liberar a origem de quem estiver chamando (seja Vercel ou localhost)
     callback(null, true);
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
