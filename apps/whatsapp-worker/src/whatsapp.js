@@ -28,7 +28,19 @@ client.on('qr', (qr) => {
   console.log('Escaneie o QR abaixo no WhatsApp:');
   qrcode.generate(qr, { small: true });
 });
-client.on('ready', () => { latestQr = null; status = 'ready'; console.log('WhatsApp conectado.'); });
+
+// ADICIONE ESTE BLOCO AQUI:
+client.on('authenticated', () => {
+  latestQr = null; // Apaga o QR Code
+  status = 'starting'; // Avisa o frontend para parar de fazer requisições rápidas e mostrar "Carregando"
+  console.log('✅ Autenticado com sucesso! Sincronizando mensagens (isso pode demorar um pouco na nuvem)...');
+});
+
+client.on('ready', () => { 
+  latestQr = null; 
+  status = 'ready'; 
+  console.log('✅ WhatsApp conectado e 100% online.'); 
+});
 client.on('auth_failure', (message) => { status = 'auth_failure'; console.error('Falha de autenticação:', message); });
 client.on('disconnected', (reason) => { status = 'disconnected'; console.warn('WhatsApp desconectado:', reason); });
 
